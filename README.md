@@ -14,7 +14,16 @@ If you are developing a production application, we recommend using TypeScript wi
 # Husky
 - Git Hook para adicionar a formatação com o prettier antes de realizar o commit
 - npm i -D husky
+- npx husky init
 
 # lint-staged
 - usado para rodar o husky (antes do commit) apenas nos arquivos em staged (criados/alterados)
-- npm i -D husky
+- npm i -D lint-staged
+- criar arquivo .lintstagedrc.json com as regras
+- adicionar a linha "npx lint-staged" no arquivo pre-commit em .husky
+
+# git-commit-msg-linter
+- usado para garantir que será usado o padrão convencional commits
+- npm i -D git-commit-msg-linter
+- criar o arquivo commit-msg em .husky
+- adicionar a linha ".git/hooks/commit-msg \$1"
