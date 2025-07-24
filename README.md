@@ -10,3 +10,11 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+# Husky
+- Git Hook para adicionar a formatação com o prettier antes de realizar o commit
+- npm i -D husky
+
+# lint-staged
+- usado para rodar o husky (antes do commit) apenas nos arquivos em staged (criados/alterados)
+- npm i -D husky
