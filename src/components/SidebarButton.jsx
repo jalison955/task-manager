@@ -6,7 +6,10 @@ const SidebarButton = ({ variant, children }) => {
     variant && variant === 'selected' ? selectedStyles : baseStyles;
 
   return (
-    <a href="#" className={`rounded-lg px-5 py-2 ${styles}`}>
+    <a
+      href="#"
+      className={`flex flex-row items-center gap-2 rounded-lg px-5 py-2 ${styles}`}
+    >
       {children}
     </a>
   );
