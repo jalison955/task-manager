@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import Input from './components/Input';
 import Button from './components/Button';
@@ -20,17 +21,22 @@ const App = () => {
   };
 
   return (
-    <div>
-      <Header>Adicionar Tarefas</Header>
-      <Input onChange={(e) => setNewTask(e.target.value)} value={newTask} />
-      <Button handleClick={handleClick} />
-      <Header>Minhas Tarefas</Header>
-      {tasks.map((task) => (
-        <div key={task.id} className="task">
-          <h2 className="text-red-600">{task.title}</h2>
-          <p>Status: {task.completed ? 'Concluída' : 'Pendente'}</p>
-        </div>
-      ))}
+    <div className="flex flex-row items-center justify-center">
+      <div>
+        <Sidebar />
+      </div>
+      <div className="flex-1 ps-3">
+        <Header>Adicionar Tarefas</Header>
+        <Input onChange={(e) => setNewTask(e.target.value)} value={newTask} />
+        <Button handleClick={handleClick} />
+        <Header>Minhas Tarefas</Header>
+        {tasks.map((task) => (
+          <div key={task.id} className="task">
+            <h2 className="text-red-600">{task.title}</h2>
+            <p>Status: {task.completed ? 'Concluída' : 'Pendente'}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
