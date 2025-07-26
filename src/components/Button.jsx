@@ -1,7 +1,7 @@
 const Button = ({ children, variant = 'primary' }) => {
   const buttonStyles = {
     primary: 'bg-[hsl(183,100%,35%)] text-white',
-    ghost: 'bg-transparent text-[#818181] text-[hsl(0,0%,50%)]',
+    ghost: 'bg-transparent text-[hsl(0,0%,50%)]',
   };
   const styles = buttonStyles[variant];
 

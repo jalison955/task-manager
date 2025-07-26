@@ -2,9 +2,9 @@ import Button from './Button';
 import TrashIcon from '../assets/icons/trash.svg?react';
 import AddIcon from '../assets/icons/add.svg?react';
 
-const Header = () => {
+const TasksHeader = () => {
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between px-2">
       <div>
         <span className="text-xs font-semibold text-[hsl(183,100%,35%)]">
           Minhas Tarefas
@@ -26,4 +26,4 @@ const Header = () => {
     </div>
   );
 };
-export default Header;
+export default TasksHeader;
