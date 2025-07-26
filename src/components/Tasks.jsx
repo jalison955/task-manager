@@ -4,12 +4,48 @@ import TasksList from './TasksList';
 
 const Tasks = () => {
   const tasksInit = [
-    { id: 1, title: 'Estudar React', period: 'manhã', completed: false },
-    { id: 2, title: 'Estudar Nest', period: 'manhã', completed: false },
-    { id: 3, title: 'Fazer aula de inglês', period: 'noite', completed: false },
-    { id: 4, title: 'Estudar React', period: 'tarde', completed: false },
-    { id: 5, title: 'Fazer exercícios', period: 'tarde', completed: true },
-    { id: 6, title: 'Ler um livro', period: 'noite', completed: false },
+    {
+      id: 1,
+      title: 'Estudar React',
+      description: 'Estudar states do React',
+      period: 'manhã',
+      status: 'waiting',
+    },
+    {
+      id: 2,
+      title: 'Estudar Nest',
+      description: 'Estudar APIs no Nest',
+      period: 'manhã',
+      status: 'progress',
+    },
+    {
+      id: 3,
+      title: 'Fazer aula de inglês',
+      description: 'Treinar conversação para entrevistas',
+      period: 'tarde',
+      status: 'done',
+    },
+    {
+      id: 4,
+      title: 'Estudar React',
+      description: 'Estudar states do React',
+      period: 'tarde',
+      status: 'waiting',
+    },
+    {
+      id: 5,
+      title: 'Fazer exercícios',
+      description: 'Fazer exercícios físicos para costas',
+      period: 'noite',
+      status: 'done',
+    },
+    {
+      id: 6,
+      title: 'Ler um livro',
+      description: 'Ler o livro Clean Code',
+      period: 'noite',
+      status: 'progress',
+    },
   ];
   const [tasks] = useState(tasksInit);
 
