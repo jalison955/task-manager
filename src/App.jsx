@@ -1,44 +1,12 @@
-import { useState } from 'react';
 import Sidebar from './components/Sidebar';
-import Header from './components/Header';
-import Input from './components/Input';
-import Button from './components/Button';
+import Tasks from './components/Tasks';
 
 const App = () => {
-  const tasksInit = [
-    { id: 1, title: 'Estudar React', completed: false },
-    { id: 2, title: 'Fazer exercícios', completed: true },
-    { id: 3, title: 'Ler um livro', completed: false },
-  ];
-  const [tasks, setTasks] = useState(tasksInit);
-  const [count, setCount] = useState(tasksInit.length + 1);
-  const [newTask, setNewTask] = useState('');
-
-  const handleClick = () => {
-    setTasks([...tasks, { id: count, title: newTask, completed: false }]);
-    setCount(count + 1);
-    setNewTask('');
-  };
-
   return (
-    <div className="flex flex-row items-center justify-center">
-      <div>
-        <Sidebar />
-      </div>
-      <div className="flex-1 ps-3">
-        <Header>Adicionar Tarefas</Header>
-        <Input onChange={(e) => setNewTask(e.target.value)} value={newTask} />
-        <Button handleClick={handleClick} />
-        <Header>Minhas Tarefas</Header>
-        {tasks.map((task) => (
-          <div key={task.id} className="task">
-            <h2 className="text-red-600">{task.title}</h2>
-            <p>Status: {task.completed ? 'Concluída' : 'Pendente'}</p>
-          </div>
-        ))}
-      </div>
+    <div className="flex">
+      <Sidebar />
+      <Tasks />
     </div>
   );
 };
-
 export default App;
