@@ -1,6 +1,6 @@
 import TasksListItem from './TasksListItem';
 
-const TasksListPeriod = ({ period, icon, tasks }) => {
+const TasksListPeriod = ({ period, icon, tasks, getId, getStatus }) => {
   return (
     <div className="mb-6 space-y-3 last:mb-0">
       <div className="flex items-center gap-2 border-b border-[hsl(240,20%,95%)] pb-1.5">
@@ -12,7 +12,12 @@ const TasksListPeriod = ({ period, icon, tasks }) => {
       {tasks
         .filter((task) => task.period === period)
         .map((task) => (
-          <TasksListItem key={task.id} task={task} />
+          <TasksListItem
+            key={task.id}
+            task={task}
+            getId={getId}
+            getStatus={getStatus}
+          />
         ))}
     </div>
   );

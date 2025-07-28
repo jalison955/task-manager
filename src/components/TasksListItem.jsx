@@ -3,17 +3,21 @@ import CheckIcon from '../assets/icons/check.svg?react';
 import DetailsIcon from '../assets/icons/details.svg?react';
 import { useState } from 'react';
 
-const TasksListItem = ({ task }) => {
+const TasksListItem = ({ task, getId, getStatus }) => {
   const [status, setStatus] = useState(task.status);
+  let newStatus;
 
   const handleStatusChange = () => {
     if (status === 'waiting') {
-      setStatus('progress');
+      newStatus = 'progress';
     } else if (status === 'progress') {
-      setStatus('done');
+      newStatus = 'done';
     } else if (status === 'done') {
-      setStatus('waiting');
+      newStatus = 'waiting';
     }
+    setStatus(newStatus);
+    getStatus(newStatus);
+    getId(task.id);
   };
 
   const statusStyle = {
@@ -50,9 +54,12 @@ const TasksListItem = ({ task }) => {
         </button>
         <h2 className={statusStyle[status].text}>{task.title}</h2>
       </div>
-      <button className="cursor-pointer bg-transparent transition hover:opacity-75">
+      <a
+        href="#"
+        className="cursor-pointer bg-transparent transition hover:opacity-75"
+      >
         <DetailsIcon />
-      </button>
+      </a>
     </div>
   );
 };

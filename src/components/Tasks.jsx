@@ -1,59 +1,78 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TasksHeader from './TasksHeader';
 import TasksList from './TasksList';
 
+const tasksInit = [
+  {
+    id: 1,
+    title: 'Estudar React',
+    description: 'Estudar states do React',
+    period: 'manhã',
+    status: 'waiting',
+  },
+  {
+    id: 2,
+    title: 'Estudar Nest',
+    description: 'Estudar APIs no Nest',
+    period: 'manhã',
+    status: 'progress',
+  },
+  {
+    id: 3,
+    title: 'Fazer aula de inglês',
+    description: 'Treinar conversação para entrevistas',
+    period: 'tarde',
+    status: 'done',
+  },
+  {
+    id: 4,
+    title: 'Estudar React',
+    description: 'Estudar states do React',
+    period: 'tarde',
+    status: 'waiting',
+  },
+  {
+    id: 5,
+    title: 'Fazer exercícios',
+    description: 'Fazer exercícios físicos para costas',
+    period: 'noite',
+    status: 'done',
+  },
+  {
+    id: 6,
+    title: 'Ler um livro',
+    description: 'Ler o livro Clean Code',
+    period: 'noite',
+    status: 'progress',
+  },
+];
 const Tasks = () => {
-  const tasksInit = [
-    {
-      id: 1,
-      title: 'Estudar React',
-      description: 'Estudar states do React',
-      period: 'manhã',
-      status: 'waiting',
-    },
-    {
-      id: 2,
-      title: 'Estudar Nest',
-      description: 'Estudar APIs no Nest',
-      period: 'manhã',
-      status: 'progress',
-    },
-    {
-      id: 3,
-      title: 'Fazer aula de inglês',
-      description: 'Treinar conversação para entrevistas',
-      period: 'tarde',
-      status: 'done',
-    },
-    {
-      id: 4,
-      title: 'Estudar React',
-      description: 'Estudar states do React',
-      period: 'tarde',
-      status: 'waiting',
-    },
-    {
-      id: 5,
-      title: 'Fazer exercícios',
-      description: 'Fazer exercícios físicos para costas',
-      period: 'noite',
-      status: 'done',
-    },
-    {
-      id: 6,
-      title: 'Ler um livro',
-      description: 'Ler o livro Clean Code',
-      period: 'noite',
-      status: 'progress',
-    },
-  ];
-  const [tasks] = useState(tasksInit);
+  const [tasks, setTasks] = useState(tasksInit);
+  const [taskId, setTaskId] = useState('');
+  const [taskStatus, setTaskStatus] = useState('');
+
+  useEffect(() => {
+    if (taskId && taskStatus) {
+      setTasks((prevTasks) =>
+        prevTasks.map((task) => {
+          if (task.id !== taskId) {
+            return task;
+          } else {
+            return { ...task, status: taskStatus };
+          }
+        })
+      );
+    }
+  }, [taskId, taskStatus]);
 
   return (
-    <div className="flex flex-1 flex-col gap-4 px-8 py-16">
-      <TasksHeader />
-      <TasksList tasks={tasks} />
-    </div>
+    <>
+      <div className="flex flex-1 flex-col gap-4 px-8 py-16">
+        <TasksHeader />
+        <TasksList tasks={tasks} getId={setTaskId} getStatus={setTaskStatus} />
+      </div>
+      <div>{tasks.map((task) => `${task.status}, `)}</div>
+    </>
   );
 };
 export default Tasks;
