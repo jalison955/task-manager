@@ -1,6 +1,13 @@
 import TasksListItem from './TasksListItem';
 
-const TasksListPeriod = ({ period, icon, tasks, getId, getStatus }) => {
+const TasksListPeriod = ({
+  period,
+  icon,
+  tasks,
+  getId,
+  getStatus,
+  handleDeleteClick,
+}) => {
   return (
     <div className="mb-6 space-y-3 last:mb-0">
       <div className="flex items-center gap-2 border-b border-[hsl(240,20%,95%)] pb-1.5">
@@ -17,6 +24,7 @@ const TasksListPeriod = ({ period, icon, tasks, getId, getStatus }) => {
             task={task}
             getId={getId}
             getStatus={getStatus}
+            handleDeleteClick={handleDeleteClick}
           />
         ))}
     </div>

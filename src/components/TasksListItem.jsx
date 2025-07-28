@@ -1,9 +1,11 @@
 import LoaderIcon from '../assets/icons/loader.svg?react';
 import CheckIcon from '../assets/icons/check.svg?react';
 import DetailsIcon from '../assets/icons/details.svg?react';
+import TrashIcon from '../assets/icons/trash.svg?react';
+import Button from './Button';
 import { useState } from 'react';
 
-const TasksListItem = ({ task, getId, getStatus }) => {
+const TasksListItem = ({ task, getId, getStatus, handleDeleteClick }) => {
   const [status, setStatus] = useState(task.status);
   let newStatus;
 
@@ -19,6 +21,8 @@ const TasksListItem = ({ task, getId, getStatus }) => {
     getStatus(newStatus);
     getId(task.id);
   };
+
+  () => task.id;
 
   const statusStyle = {
     done: {
@@ -54,12 +58,17 @@ const TasksListItem = ({ task, getId, getStatus }) => {
         </button>
         <h2 className={statusStyle[status].text}>{task.title}</h2>
       </div>
-      <a
-        href="#"
-        className="cursor-pointer bg-transparent transition hover:opacity-75"
-      >
-        <DetailsIcon />
-      </a>
+      <div className="flex items-center gap-1">
+        <Button variant="ghost" onClick={() => handleDeleteClick(task.id)}>
+          <TrashIcon className="text-[hsl(216,5%,60%)]" />
+        </Button>
+        <a
+          href="#"
+          className="cursor-pointer bg-transparent transition hover:opacity-75"
+        >
+          <DetailsIcon />
+        </a>
+      </div>
     </div>
   );
 };

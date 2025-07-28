@@ -51,6 +51,11 @@ const Tasks = () => {
   const [taskId, setTaskId] = useState('');
   const [taskStatus, setTaskStatus] = useState('');
 
+  const handleDeleteClick = (taskId) => {
+    const newTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks(newTasks);
+  };
+
   useEffect(() => {
     if (taskId && taskStatus) {
       setTasks((prevTasks) =>
@@ -66,13 +71,16 @@ const Tasks = () => {
   }, [taskId, taskStatus]);
 
   return (
-    <>
-      <div className="flex flex-1 flex-col gap-4 px-8 py-16">
-        <TasksHeader />
-        <TasksList tasks={tasks} getId={setTaskId} getStatus={setTaskStatus} />
-      </div>
-      <div>{tasks.map((task) => `${task.status}, `)}</div>
-    </>
+    <div className="flex flex-1 flex-col gap-5 px-8 py-16">
+      <TasksHeader />
+      <TasksList
+        tasks={tasks}
+        getId={setTaskId}
+        getStatus={setTaskStatus}
+        handleDeleteClick={handleDeleteClick}
+      />
+      <div>tarefas: {tasks.map((task) => `${task.id}-${task.status} `)}</div>
+    </div>
   );
 };
 export default Tasks;

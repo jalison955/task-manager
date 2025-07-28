@@ -3,7 +3,7 @@ import SunIcon from '../assets/icons/sun.svg?react';
 import CloudSunIcon from '../assets/icons/cloud-sun.svg?react';
 import MoonIcon from '../assets/icons/moon.svg?react';
 
-const TasksList = ({ tasks, getId, getStatus }) => {
+const TasksList = ({ tasks, getId, getStatus, handleDeleteClick }) => {
   return (
     <div className="rounded-lg bg-white p-5 shadow-sm">
       <TasksListPeriod
@@ -12,6 +12,7 @@ const TasksList = ({ tasks, getId, getStatus }) => {
         tasks={tasks}
         getId={getId}
         getStatus={getStatus}
+        handleDeleteClick={handleDeleteClick}
       />
       <TasksListPeriod
         period={'tarde'}
@@ -19,6 +20,7 @@ const TasksList = ({ tasks, getId, getStatus }) => {
         tasks={tasks}
         getId={getId}
         getStatus={getStatus}
+        handleDeleteClick={handleDeleteClick}
       />
       <TasksListPeriod
         period={'noite'}
@@ -26,6 +28,7 @@ const TasksList = ({ tasks, getId, getStatus }) => {
         tasks={tasks}
         getId={getId}
         getStatus={getStatus}
+        handleDeleteClick={handleDeleteClick}
       />
     </div>
   );
