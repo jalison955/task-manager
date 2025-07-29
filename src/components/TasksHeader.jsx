@@ -9,7 +9,9 @@ const TasksHeader = () => {
         <span className="text-xs font-semibold text-[hsl(183,100%,35%)]">
           Minhas Tarefas
         </span>
-        <h2 className="text-xl font-semibold">Minhas Tarefas</h2>
+        <h2 className="text-xl font-semibold text-[hsl(220,10%,25%)]">
+          Minhas Tarefas
+        </h2>
       </div>
 
       <div className="flex items-end gap-2">

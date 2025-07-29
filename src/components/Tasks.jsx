@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import TasksHeader from './TasksHeader';
 import TasksList from './TasksList';
+import { toast } from 'sonner';
 
 const tasksInit = [
   {
@@ -54,6 +55,7 @@ const Tasks = () => {
   const handleDeleteClick = (taskId) => {
     const newTasks = tasks.filter((task) => task.id !== taskId);
     setTasks(newTasks);
+    toast.success('Tarefa deletada com sucesso!');
   };
 
   useEffect(() => {
@@ -79,7 +81,6 @@ const Tasks = () => {
         getStatus={setTaskStatus}
         handleDeleteClick={handleDeleteClick}
       />
-      <div>tarefas: {tasks.map((task) => `${task.id}-${task.status} `)}</div>
     </div>
   );
 };

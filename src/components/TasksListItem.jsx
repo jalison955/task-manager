@@ -3,6 +3,7 @@ import CheckIcon from '../assets/icons/check.svg?react';
 import DetailsIcon from '../assets/icons/details.svg?react';
 import TrashIcon from '../assets/icons/trash.svg?react';
 import Button from './Button';
+import { toast } from 'sonner';
 import { useState } from 'react';
 
 const TasksListItem = ({ task, getId, getStatus, handleDeleteClick }) => {
@@ -12,10 +13,13 @@ const TasksListItem = ({ task, getId, getStatus, handleDeleteClick }) => {
   const handleStatusChange = () => {
     if (status === 'waiting') {
       newStatus = 'progress';
+      toast.success('A tarefa foi iniciada');
     } else if (status === 'progress') {
       newStatus = 'done';
+      toast.success('A tarefa foi concluída');
     } else if (status === 'done') {
       newStatus = 'waiting';
+      toast.success('A tarefa foi reiniciada');
     }
     setStatus(newStatus);
     getStatus(newStatus);
