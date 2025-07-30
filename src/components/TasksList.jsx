@@ -1,7 +1,5 @@
 import TasksListPeriod from './TasksListPeriod';
-import SunIcon from '../assets/icons/sun.svg?react';
-import CloudSunIcon from '../assets/icons/cloud-sun.svg?react';
-import MoonIcon from '../assets/icons/moon.svg?react';
+import { SunIcon, CloudSunIcon, MoonIcon } from '../assets/icons';
 
 const TasksList = ({ tasks, getId, getStatus, handleDeleteClick }) => {
   const morningTasks = tasks.filter(

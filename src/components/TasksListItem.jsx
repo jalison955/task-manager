@@ -1,7 +1,4 @@
-import LoaderIcon from '../assets/icons/loader.svg?react';
-import CheckIcon from '../assets/icons/check.svg?react';
-import DetailsIcon from '../assets/icons/details.svg?react';
-import TrashIcon from '../assets/icons/trash.svg?react';
+import { LoaderIcon, CheckIcon, DetailsIcon, TrashIcon } from '../assets/icons';
 import Button from './Button';
 import { toast } from 'sonner';
 import { useState } from 'react';

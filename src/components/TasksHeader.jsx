@@ -1,6 +1,5 @@
 import Button from './Button';
-import TrashIcon from '../assets/icons/trash.svg?react';
-import AddIcon from '../assets/icons/add.svg?react';
+import { TrashIcon, AddIcon } from '../assets/icons';
 
 const TasksHeader = () => {
   return (
