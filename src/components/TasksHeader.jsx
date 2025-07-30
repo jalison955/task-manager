@@ -7,10 +7,6 @@ import Button from './Button';
 const TasksHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleTaskDialogOpen = () => {
-    setIsOpen(true);
-  };
-
   return (
     <div className="flex justify-between px-2">
       <div>
@@ -28,7 +24,7 @@ const TasksHeader = () => {
           <TrashIcon />
         </Button>
 
-        <Button onClick={handleTaskDialogOpen}>
+        <Button onClick={() => setIsOpen(true)}>
           <AddIcon />
           Adicionar tarefa
         </Button>
