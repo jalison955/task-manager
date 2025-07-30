@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
+
 import TasksHeader from './TasksHeader';
 import TasksList from './TasksList';
-import { toast } from 'sonner';
 
 const tasksInit = [
   {

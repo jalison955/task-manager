@@ -1,7 +1,8 @@
-import { LoaderIcon, CheckIcon, DetailsIcon, TrashIcon } from '../assets/icons';
-import Button from './Button';
-import { toast } from 'sonner';
 import { useState } from 'react';
+import { toast } from 'sonner';
+
+import { CheckIcon, DetailsIcon, LoaderIcon, TrashIcon } from '../assets/icons';
+import Button from './Button';
 
 const TasksListItem = ({ task, getId, getStatus, handleDeleteClick }) => {
   const [status, setStatus] = useState(task.status);
