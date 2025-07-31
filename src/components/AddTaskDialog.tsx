@@ -5,6 +5,7 @@ import InputLabel from './InputLabel';
 import { CSSTransition } from 'react-transition-group';
 import { useRef } from 'react';
 import './AddTaskDialog.css';
+import SelecPeriod from './SelectPeriod';
 
 const AddTaskDialog = ({ isOpen, setIsOpen }) => {
   const nodeRef = useRef(null);
@@ -23,7 +24,7 @@ const AddTaskDialog = ({ isOpen, setIsOpen }) => {
             ref={nodeRef}
             className="fixed top-0 left-0 flex h-screen w-screen items-center justify-center backdrop-blur-[4px]"
           >
-            <div className="flex w-84 flex-col gap-4 rounded-xl bg-white p-5 text-center shadow">
+            <div className="flex w-84 flex-col gap-4 rounded-xl border border-[hsl(0,0%,97%)] bg-white p-5 text-center shadow-xs">
               <div className="flex flex-col gap-1 text-center">
                 <h2 className="text-xl font-semibold text-[hsl(216,10%,25%)]">
                   Nova Tarefa
@@ -40,18 +41,7 @@ const AddTaskDialog = ({ isOpen, setIsOpen }) => {
                   placeholder="Insira o título da tarefa"
                 />
 
-                <div className="flex flex-col gap-1">
-                  <InputLabel htmlFor="period">Horário</InputLabel>
-                  <select
-                    id="period"
-                    className="rounded-md border border-[hsl(0,0%,90%)] px-4 py-3 text-[hsl(216,10%,25%)] outline-[hsl(183,100%,35%)]"
-                  >
-                    <option value="">Selecione</option>
-                    <option value="manhã">Manhã</option>
-                    <option value="tarde">Tarde</option>
-                    <option value="noite">Noite</option>
-                  </select>
-                </div>
+                <SelecPeriod />
 
                 <Input
                   id="description"
