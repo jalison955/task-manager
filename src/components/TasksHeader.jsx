@@ -4,7 +4,7 @@ import { AddIcon, TrashIcon } from '../assets/icons';
 import AddTaskDialog from './AddTaskDialog';
 import Button from './Button';
 
-const TasksHeader = () => {
+const TasksHeader = ({ idAtual, getNewId, addTask }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -30,7 +30,13 @@ const TasksHeader = () => {
         </Button>
       </div>
 
-      <AddTaskDialog isOpen={isOpen} setIsOpen={setIsOpen} />
+      <AddTaskDialog
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        idAtual={idAtual}
+        getNewId={getNewId}
+        addTask={addTask}
+      />
     </div>
   );
 };

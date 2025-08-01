@@ -1,14 +1,37 @@
 import { createPortal } from 'react-dom';
 import Button from './Button';
 import Input from './Input';
-import InputLabel from './InputLabel';
 import { CSSTransition } from 'react-transition-group';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import './AddTaskDialog.css';
 import SelecPeriod from './SelectPeriod';
 
-const AddTaskDialog = ({ isOpen, setIsOpen }) => {
+const AddTaskDialog = ({ isOpen, setIsOpen, idAtual, getNewId, addTask }) => {
   const nodeRef = useRef(null);
+  const newId = idAtual + 1;
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [period, setPeriod] = useState('');
+
+  const clearInputs = () => {
+    setTitle('');
+    setDescription('');
+    setPeriod('');
+  };
+
+  const handleAddTask = () => {
+    const task = {
+      id: idAtual + 1,
+      title,
+      description,
+      period,
+      status: 'waiting',
+    };
+    addTask(task);
+    setIsOpen(false);
+    getNewId(newId);
+    clearInputs();
+  };
 
   return (
     <CSSTransition
@@ -22,9 +45,9 @@ const AddTaskDialog = ({ isOpen, setIsOpen }) => {
         {createPortal(
           <div
             ref={nodeRef}
-            className="fixed top-0 left-0 flex h-screen w-screen items-center justify-center backdrop-blur-[4px]"
+            className="fixed top-0 left-0 flex h-screen w-screen items-center justify-center backdrop-blur"
           >
-            <div className="flex w-84 flex-col gap-4 rounded-xl border border-[hsl(0,0%,97%)] bg-white p-5 text-center shadow-xs">
+            <div className="flex w-84 flex-col gap-4 rounded-xl border border-[hsl(0,0%,97%)] bg-white p-5 text-center shadow-sm">
               <div className="flex flex-col gap-1 text-center">
                 <h2 className="text-xl font-semibold text-[hsl(216,10%,25%)]">
                   Nova Tarefa
@@ -37,16 +60,26 @@ const AddTaskDialog = ({ isOpen, setIsOpen }) => {
               <div className="flex flex-col gap-4">
                 <Input
                   id="title"
-                  label="Titulo"
+                  label="Titulo *"
                   placeholder="Insira o título da tarefa"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  required
                 />
 
-                <SelecPeriod />
+                <SelecPeriod
+                  value={period}
+                  onChange={(e) => setPeriod(e.target.value)}
+                  required
+                />
 
                 <Input
                   id="description"
-                  label="Descrição"
+                  label="Descrição *"
                   placeholder="Descreva a tarefa"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  required
                 />
               </div>
 
@@ -60,7 +93,7 @@ const AddTaskDialog = ({ isOpen, setIsOpen }) => {
                   <p className="text-center">Cancelar</p>
                 </Button>
 
-                <Button className="w-full" size="large">
+                <Button className="w-full" size="large" onClick={handleAddTask}>
                   <p className="text-center">Salvar</p>
                 </Button>
               </div>

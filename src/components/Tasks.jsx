@@ -52,6 +52,7 @@ const Tasks = () => {
   const [tasks, setTasks] = useState(tasksInit);
   const [taskId, setTaskId] = useState('');
   const [taskStatus, setTaskStatus] = useState('');
+  const [idAtual, setIdAtual] = useState(6);
 
   const handleDeleteClick = (taskId) => {
     const newTasks = tasks.filter((task) => task.id !== taskId);
@@ -73,13 +74,22 @@ const Tasks = () => {
     }
   }, [taskId, taskStatus]);
 
+  const handleAddTask = (newTask) => {
+    setTasks((prevTasks) => [...prevTasks, newTask]);
+    toast.success('Tarefa adicionada com sucesso!');
+  };
+
   return (
     <div className="flex flex-1 flex-col gap-5 px-8 py-16">
-      <TasksHeader />
+      <TasksHeader
+        idAtual={idAtual}
+        getNewId={setIdAtual}
+        addTask={handleAddTask}
+      />
       <TasksList
         tasks={tasks}
-        getId={setTaskId}
         getStatus={setTaskStatus}
+        getId={setTaskId}
         handleDeleteClick={handleDeleteClick}
       />
     </div>
