@@ -2,7 +2,7 @@ import { createPortal } from 'react-dom';
 import Button from './Button';
 import Input from './Input';
 import { CSSTransition } from 'react-transition-group';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './AddTaskDialog.css';
 import SelecPeriod from './SelectPeriod';
 
@@ -13,13 +13,24 @@ const AddTaskDialog = ({ isOpen, setIsOpen, idAtual, getNewId, addTask }) => {
   const [description, setDescription] = useState('');
   const [period, setPeriod] = useState('');
 
-  const clearInputs = () => {
-    setTitle('');
-    setDescription('');
-    setPeriod('');
-  };
+  useEffect(() => {
+    if (!isOpen) {
+      setTitle('');
+      setDescription('');
+      setPeriod('');
+    }
+  }, [isOpen]); // ou usar a função clearInputs e chamá-la no handleAddTask
 
   const handleAddTask = () => {
+    if (
+      !title.trim() ||
+      !description.trim() ||
+      !period.trim() ||
+      period === 'Selecione'
+    ) {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
     const task = {
       id: idAtual + 1,
       title,
@@ -30,7 +41,6 @@ const AddTaskDialog = ({ isOpen, setIsOpen, idAtual, getNewId, addTask }) => {
     addTask(task);
     setIsOpen(false);
     getNewId(newId);
-    clearInputs();
   };
 
   return (
@@ -64,13 +74,11 @@ const AddTaskDialog = ({ isOpen, setIsOpen, idAtual, getNewId, addTask }) => {
                   placeholder="Insira o título da tarefa"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  required
                 />
 
                 <SelecPeriod
                   value={period}
                   onChange={(e) => setPeriod(e.target.value)}
-                  required
                 />
 
                 <Input
@@ -79,7 +87,6 @@ const AddTaskDialog = ({ isOpen, setIsOpen, idAtual, getNewId, addTask }) => {
                   placeholder="Descreva a tarefa"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  required
                 />
               </div>
 
