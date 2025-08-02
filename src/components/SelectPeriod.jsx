@@ -9,7 +9,7 @@ const SelecPeriod = ({ ...rest }) => {
         className="rounded-md border border-[hsl(0,0%,90%)] px-4 py-3 text-[hsl(216,10%,25%)] outline-[hsl(183,100%,35%)]"
         {...rest}
       >
-        <option selected value="">
+        <option value="default" disabled>
           Selecione
         </option>
         <option value="manhã">Manhã</option>

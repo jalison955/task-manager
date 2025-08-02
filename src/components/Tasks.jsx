@@ -48,6 +48,7 @@ const tasksInit = [
     status: 'progress',
   },
 ];
+
 const Tasks = () => {
   const [tasks, setTasks] = useState(tasksInit);
   const [taskId, setTaskId] = useState('');
